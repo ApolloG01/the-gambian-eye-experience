@@ -1,19 +1,8 @@
 "use client";
 
 import { useState } from "react";
-
-type Traveller = "Family" | "Couples" | "Groups";
-type Interest =
-  | "Adventure"
-  | "Nature & Wildlife"
-  | "Seaside"
-  | "Art & Culture"
-  | "Party"
-  | "Boat Trips"
-  | "Food & Drink"
-  | "History"
-  | "Bird Watching"
-  | "Chillax";
+import type { Interest } from "@/app/data/tours";
+import type { Traveller } from "@/app/types";
 
 const travellers: Traveller[] = ["Family", "Couples", "Groups"];
 const interests: Interest[] = [
