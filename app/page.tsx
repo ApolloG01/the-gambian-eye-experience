@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Sparkles, Gem, ShieldCheck } from "lucide-react";
+import TripPlanner from "./components/TripPlanner";
 
 export default function Home() {
   return (
@@ -88,6 +89,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <TripPlanner />
     </>
   );
 }
