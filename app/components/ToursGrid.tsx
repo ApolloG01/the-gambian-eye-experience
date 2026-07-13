@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MapPin, Clock, CheckCircle } from "lucide-react";
 import { tours } from "@/app/data/tours";
 import type { Interest } from "@/app/data/tours";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const allInterests: Interest[] = [
   "Adventure",
@@ -20,10 +24,32 @@ const allInterests: Interest[] = [
 
 export default function ToursGrid() {
   const [activeInterest, setActiveInterest] = useState<Interest | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const filtered = activeInterest
     ? tours.filter((t) => t.interests.includes(activeInterest))
     : tours;
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = gridRef.current?.querySelectorAll(".tour-card");
+      if (!cards) return;
+
+      gsap.from(cards, {
+        opacity: 0,
+        y: 60,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 85%",
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, [filtered]);
 
   return (
     <div>
@@ -63,11 +89,14 @@ export default function ToursGrid() {
             No tours match that interest yet.
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            ref={gridRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {filtered.map((tour) => (
               <div
                 key={tour.id}
-                className="border border-black/10 rounded-2xl overflow-hidden flex flex-col"
+                className="tour-card border border-black/10 rounded-2xl overflow-hidden flex flex-col"
               >
                 {/* Card header */}
                 <div className="bg-gambia-blue/5 px-6 pt-6 pb-4">
@@ -76,7 +105,7 @@ export default function ToursGrid() {
                       {tour.duration}
                     </span>
                     <span className="text-sm font-semibold text-gambia-blue">
-                      From {tour.currency === "GBP" ? "£" : ""}
+                      From {tour.currency === "GMD" ? "D" : ""}
                       {tour.priceFrom}{" "}
                       <span className="text-xs font-normal text-black/40">
                         per person

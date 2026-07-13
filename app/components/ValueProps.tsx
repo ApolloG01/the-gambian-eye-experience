@@ -39,20 +39,24 @@ export default function ValueProps() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const cards = cardsRef.current?.querySelectorAll(".value-card");
-    if (!cards) return;
+    const ctx = gsap.context(() => {
+      const cards = cardsRef.current?.querySelectorAll(".value-card");
+      if (!cards) return;
 
-    gsap.from(cards, {
-      opacity: 0,
-      y: 60,
-      duration: 1.2,
-      ease: "power3.out",
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: cardsRef.current,
-        start: "top 80%",
-      },
+      gsap.from(cards, {
+        opacity: 0,
+        y: 60,
+        duration: 1.2,
+        ease: "power3.out",
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: "top 80%",
+        },
+      });
     });
+
+    return () => ctx.revert();
   }, []);
 
   return (

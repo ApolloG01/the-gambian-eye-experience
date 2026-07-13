@@ -12,45 +12,49 @@ export default function HeroSection() {
   const taglineRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    const tl = gsap.timeline();
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
 
-    tl.from(taglineRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      ease: "power2.out",
-    })
-      .from(
-        headingRef.current,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 1.2,
-          ease: "power3.out",
-        },
-        "-=0.4",
-      )
-      .from(
-        subRef.current,
-        {
-          opacity: 0,
-          y: 30,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=0.5",
-      )
-      .from(
-        [cta1Ref.current, cta2Ref.current],
-        {
-          opacity: 0,
-          scale: 0.85,
-          duration: 0.7,
-          ease: "back.out(1.7)",
-          stagger: 0.45,
-        },
-        "-=0.2",
-      );
+      tl.from(taglineRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        ease: "power2.out",
+      })
+        .from(
+          headingRef.current,
+          {
+            opacity: 0,
+            y: 50,
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        )
+        .from(
+          subRef.current,
+          {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.5",
+        )
+        .from(
+          [cta1Ref.current, cta2Ref.current],
+          {
+            opacity: 0,
+            scale: 0.85,
+            duration: 0.7,
+            ease: "back.out(1.7)",
+            stagger: 0.15,
+          },
+          "-=0.2",
+        );
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
