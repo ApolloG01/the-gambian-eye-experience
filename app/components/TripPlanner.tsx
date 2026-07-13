@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { Interest } from "@/app/data/tours";
 import type { Traveller } from "@/app/types";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const travellers: Traveller[] = ["Family", "Couples", "Groups"];
 const interests: Interest[] = [
@@ -42,13 +44,85 @@ export default function TripPlanner() {
     return `https://wa.me/2209984010?text=${encodeURIComponent(parts.join(" "))}`;
   }
 
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subRef = useRef<HTMLParagraphElement>(null);
+  const travellersRef = useRef<HTMLDivElement>(null);
+  const interestsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+      });
+
+      tl.from(headingRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out",
+      })
+        .from(
+          subRef.current,
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.7,
+            ease: "power3.out",
+          },
+          "-=0.4",
+        )
+        .from(
+          travellersRef.current?.querySelectorAll("button") ?? [],
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+            ease: "power3.out",
+            stagger: 0.1,
+          },
+          "-=0.3",
+        )
+        .from(
+          interestsRef.current?.querySelectorAll("button") ?? [],
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+            ease: "power3.out",
+            stagger: 0.05,
+          },
+          "-=0.2",
+        )
+        .from(
+          ctaRef.current,
+          {
+            opacity: 0,
+            scale: 0.9,
+            duration: 0.6,
+            ease: "back.out(1.7)",
+          },
+          "-=0.1",
+        );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="bg-zinc-50 py-20 px-4">
+    <section ref={sectionRef} className="bg-zinc-50 py-20 px-4">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gambia-blue mb-2">
+        <h2
+          ref={headingRef}
+          className="text-3xl font-bold text-gambia-blue mb-2"
+        >
           Plan your trip
         </h2>
-        <p className="text-black/60 mb-10">
+        <p ref={subRef} className="text-black/60 mb-10">
           Tell Usman who's coming and what you love — we'll start a WhatsApp
           message with your choices so planning is effortless.
         </p>
@@ -57,7 +131,10 @@ export default function TripPlanner() {
         <p className="text-sm font-medium text-gambia-blue mb-4 uppercase tracking-wide">
           Who's travelling?
         </p>
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div
+          ref={travellersRef}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
           {travellers.map((t) => (
             <button
               key={t}
@@ -77,7 +154,10 @@ export default function TripPlanner() {
         <p className="text-sm font-medium text-gambia-blue mb-4 uppercase tracking-wide">
           What are you into?
         </p>
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div
+          ref={interestsRef}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
           {interests.map((interest) => (
             <button
               key={interest}
