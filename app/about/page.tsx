@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <div>
       {/* Header */}
-      <div className="bg-gambia-blue text-white py-16 px-4 text-center">
+      <div className="bg-gambia-red-dark text-white py-16 px-4 text-center">
         <h1 className="text-4xl font-bold mb-3">Meet Usman</h1>
         <p className="text-white/70 max-w-xl mx-auto">
           Your guide, your local, your Gambia.
@@ -74,7 +74,7 @@ export default function AboutPage() {
 
         {/* Why book local */}
         <div className="mt-20 border-t border-black/10 pt-16">
-          <h2 className="text-2xl font-bold text-gambia-blue mb-8 text-center">
+          <h2 className="text-2xl font-bold text-gambia-red mb-8 text-center">
             Why book with a local guide?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

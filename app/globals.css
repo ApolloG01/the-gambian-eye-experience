@@ -3,9 +3,11 @@
 @theme inline {
   /* Gambian flag colours */
   --color-gambia-red: #ce1126;
+  --color-gambia-red-dark: #a50e1e;
   --color-gambia-white: #ffffff;
   --color-gambia-blue: #0c1c8c;
   --color-gambia-green: #3a7728;
+  --color-gambia-surface: #f1f3fb;
 
   /* Aliases */
   --color-primary: var(--color-gambia-red);

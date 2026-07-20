@@ -11,7 +11,7 @@ export default function ContactPage() {
   return (
     <div>
       {" "}
-      <div className="bg-gambia-blue text-white py-16 px-4 text-center">
+      <div className="bg-gambia-red-dark text-white py-16 px-4 text-center">
         <h1 className="text-4xl font-bold mb-3">Get in touch</h1>
         <p className="text-white/70 max-w-xl mx-auto">
           Ready to plan your trip? Message Usman directly on WhatsApp or fill in

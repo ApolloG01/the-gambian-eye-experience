@@ -22,11 +22,13 @@ export type Tour = {
   priceFrom: number;
   currency: string;
   interests: Interest[];
+  gradient: string;
 };
 
 export const tours: Tour[] = [
   {
     id: "river-safari",
+    gradient: "from-blue-800 to-cyan-600",
     name: "River Gambia Safari & Baboon Islands",
     description:
       "Cruise the River Gambia by boat to spot hippos, chimpanzees and dozens of bird species around the protected islands — a slow, peaceful day on the water.",
@@ -49,6 +51,7 @@ export const tours: Tour[] = [
   },
   {
     id: "roots-history",
+    gradient: "from-amber-800 to-orange-500",
     name: "Kunta Kinteh Island & Roots History",
     description:
       "Visit the UNESCO-listed Kunta Kinteh Island and Juffureh to walk through the story of the transatlantic slave trade with a guide who grew up with these stories.",
@@ -66,6 +69,7 @@ export const tours: Tour[] = [
   },
   {
     id: "tanji-fishing",
+    gradient: "from-teal-700 to-emerald-400",
     name: "Tanji Fishing Village & Beach",
     description:
       "See the colourful pirogues come in, watch the catch sorted on the sand, and relax on a quiet stretch of Atlantic coast away from the resorts.",
@@ -83,6 +87,7 @@ export const tours: Tour[] = [
   },
   {
     id: "abuko-nature",
+    gradient: "from-green-800 to-lime-500",
     name: "Abuko Nature Reserve",
     description:
       "Walk through one of West Africa's smallest but most rewarding nature reserves — monkeys, crocodiles, and over 270 bird species in a compact, accessible forest.",
@@ -95,6 +100,7 @@ export const tours: Tour[] = [
   },
   {
     id: "banjul-city",
+    gradient: "from-indigo-800 to-blue-500",
     name: "Banjul City & Albert Market",
     description:
       "Explore the low-rise, unhurried capital — the arch, the port, the colonial streets — then dive into Albert Market for fabrics, spices and local crafts.",
@@ -107,6 +113,7 @@ export const tours: Tour[] = [
   },
   {
     id: "sunset-pirogue",
+    gradient: "from-orange-700 to-yellow-400",
     name: "Sunset Pirogue on the River",
     description:
       "A relaxed evening on the river in a traditional wooden pirogue — watching the sun drop behind the mangroves with a cold drink in hand.",
