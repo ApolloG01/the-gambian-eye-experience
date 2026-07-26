@@ -6,18 +6,13 @@ import type { Traveller } from "@/app/types";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const travellers: Traveller[] = ["Family", "Couples", "Groups"];
+const travellers: Traveller[] = ["Just me", "Family", "Couples", "Groups"];
 const interests: Interest[] = [
   "Adventure",
   "Nature & Wildlife",
-  "Seaside",
-  "Art & Culture",
-  "Party",
+  "Chillax at the Seaside",
   "Boat Trips",
-  "Food & Drink",
-  "History",
   "Bird Watching",
-  "Chillax",
 ];
 
 export default function TripPlanner() {
@@ -83,7 +78,7 @@ export default function TripPlanner() {
             y: 20,
             duration: 0.5,
             ease: "power3.out",
-            stagger: 0.1,
+            stagger: 0.2,
           },
           "-=0.3",
         )
@@ -94,7 +89,7 @@ export default function TripPlanner() {
             y: 20,
             duration: 0.5,
             ease: "power3.out",
-            stagger: 0.05,
+            stagger: 0.2,
           },
           "-=0.2",
         )
@@ -114,15 +109,15 @@ export default function TripPlanner() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-zinc-50 py-20 px-4">
+    <section ref={sectionRef} className="bg-zinc-50  px-4">
       <div className="max-w-3xl mx-auto text-center">
         <h2
           ref={headingRef}
-          className="text-3xl font-bold text-gambia-blue mb-2"
+          className="text-3xl font-bold text-gambia-red mb-2"
         >
           Plan your trip
         </h2>
-        <p ref={subRef} className="text-black/60 mb-10">
+        <p ref={subRef} className="text-black/60 mb-10 py-4">
           Tell Usman who's coming and what you love — we'll start a WhatsApp
           message with your choices so planning is effortless.
         </p>
@@ -142,7 +137,7 @@ export default function TripPlanner() {
               className={`px-6 py-3 rounded-full border text-sm font-medium transition-colors ${
                 selectedTraveller === t
                   ? "bg-gambia-blue text-white border-gambia-blue"
-                  : "border-black/20 text-black/60 hover:border-gambia-blue hover:text-gambia-blue"
+                  : "border-black/20 text-black/60 hover:border-gambia-red hover:text-gambia-red"
               }`}
             >
               {t}
@@ -165,7 +160,7 @@ export default function TripPlanner() {
               className={`px-5 py-2 rounded-full border text-sm font-medium transition-colors ${
                 selectedInterests.includes(interest)
                   ? "bg-gambia-green text-white border-gambia-green"
-                  : "border-black/20 text-black/60 hover:border-gambia-green hover:text-gambia-green"
+                  : "border-black/20 text-black/60 hover:border-gambia-red hover:text-gambia-red"
               }`}
             >
               {interest}
@@ -179,7 +174,7 @@ export default function TripPlanner() {
           href={buildWhatsAppMessage()}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-gambia-green text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-opacity"
+          className="inline-block bg-gambia-green text-white px-8 py-4 my-8 rounded-full font-medium hover:opacity-90 transition-opacity"
         >
           Send my trip on WhatsApp
         </a>

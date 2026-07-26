@@ -10,16 +10,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const allInterests: Interest[] = [
-  "Adventure",
-  "Nature & Wildlife",
-  "Seaside",
-  "Art & Culture",
-  "Party",
-  "Boat Trips",
-  "Food & Drink",
-  "History",
+  "Wildlife & Safari",
   "Bird Watching",
-  "Chillax",
+  "History & Heritage",
+  "Local Culture",
+  "Beach & Relaxation",
+  "Boat & River",
 ];
 
 export default function ToursGrid() {
@@ -29,6 +25,8 @@ export default function ToursGrid() {
   const filtered = activeInterest
     ? tours.filter((t) => t.interests.includes(activeInterest))
     : tours;
+
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -60,8 +58,8 @@ export default function ToursGrid() {
             onClick={() => setActiveInterest(null)}
             className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
               activeInterest === null
-                ? "bg-gambia-green text-white border-gambia-green"
-                : "border-black/20 text-black/60 hover:border-gambia-green hover:text-gambia-green"
+                ? "bg-gambia-navy text-white border-gambia-navy"
+                : "border-black/20 text-black/60 hover:border-gambia-navy hover:text-gambia-navy"
             }`}
           >
             All tours
@@ -72,8 +70,8 @@ export default function ToursGrid() {
               onClick={() => setActiveInterest(interest)}
               className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
                 activeInterest === interest
-                  ? "bg-gambia-green text-white border-gambia-green"
-                  : "border-black/20 text-black/60 hover:border-gambia-green hover:text-gambia-green"
+                  ? "bg-gambia-navy text-white border-gambia-navy"
+                  : "border-black/20 text-black/60 hover:border-gambia-navy hover:text-gambia-navy"
               }`}
             >
               {interest}
@@ -126,9 +124,19 @@ export default function ToursGrid() {
                   </h2>
 
                   {/* Description */}
-                  <p className="text-sm text-black/50 leading-relaxed line-clamp-3">
-                    {tour.description}
+                  <p className="text-sm text-black/50 leading-relaxed">
+                    {expandedId === tour.id
+                      ? tour.description
+                      : tour.description.slice(0, 100) + "..."}
                   </p>
+                  <button
+                    onClick={() =>
+                      setExpandedId(expandedId === tour.id ? null : tour.id)
+                    }
+                    className="text-xs text-gambia-red-dark font-medium hover:underline text-left"
+                  >
+                    {expandedId === tour.id ? "Read less" : "Read more"}
+                  </button>
 
                   {/* Locations */}
                   <div className="flex items-center gap-2 text-xs text-black/40">
