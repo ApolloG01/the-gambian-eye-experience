@@ -4,18 +4,18 @@ import ContactForm from "@/app/components/ContactForm";
 export const metadata = {
   title: "Contact | The Gambian Eye",
   description:
-    "Get in touch with Usman Baldeh to plan your private tour in The Gambia.",
+    "Get in touch with Ousman Baldeh to plan your private tour in The Gambia.",
 };
 
 export default function ContactPage() {
   return (
     <div>
       {" "}
-      <div className="bg-gambia-red-dark text-white py-16 px-4 text-center">
+      <div className="bg-gambia-surface text-black py-16 px-4 text-center">
         <h1 className="text-4xl font-bold mb-3">Get in touch</h1>
-        <p className="text-white/70 max-w-xl mx-auto">
-          Ready to plan your trip? Message Usman directly on WhatsApp or fill in
-          the form below.
+        <p className="text-gambia-blue/70 max-w-xl mx-auto">
+          Ready to plan your trip? Message Ousman directly on WhatsApp or fill
+          in the form below.
         </p>
       </div>
       <div className="flex flex-col max-w-4xl mx-auto px-4 py-8 text-center items-center">
@@ -30,7 +30,7 @@ export default function ContactPage() {
           <div className="flex items-center justify-center gap-3 text-sm text-black/60">
             <MessageCircle className="w-4 h-4 mt-0.5 shrink-0 text-gambia-green" />
             <span>
-              WhatsApp is the fastest way to reach Usman — he typically replies
+              WhatsApp is the fastest way to reach Ousman — he typically replies
               within a few hours.
             </span>
           </div>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                   Languages
                 </p>
                 <p className="text-sm text-black/50">
-                  English, Mandinka, Wolof.
+                  English, Fula, Mandinka, Wolof.
                 </p>
               </div>
             </div>

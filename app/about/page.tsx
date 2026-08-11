@@ -1,46 +1,60 @@
+import Image from "next/image";
 import { MapPin, Globe, Clock } from "lucide-react";
 
 export const metadata = {
-  title: "About | The Gambian Eye",
+  title: "About Ousman | The Gambian Eye",
   description:
-    "Meet Usman Baldeh — your private local guide in The Gambia. Authentic experiences, local knowledge, no tourist traps.",
+    "Meet Ousman Baldeh — your private local guide in The Gambia. Discover authentic experiences, deep local knowledge, and zero tourist traps.",
 };
 
 export default function AboutPage() {
   return (
     <div>
       {/* Header */}
-      <div className="bg-gambia-red-dark text-white py-16 px-4 text-center">
-        <h1 className="text-4xl font-bold mb-3">Meet Usman</h1>
-        <p className="text-white/70 max-w-xl mx-auto">
-          Your guide, your local, your Gambia.
+      <div className="bg-gambia-surface text-black py-16 px-4 text-center">
+        <h1 className="text-4xl font-bold mb-3">Meet Ousman</h1>
+        <p className="text-gambia-blue/70 max-w-xl mx-auto">
+          Your guide, your local insider, your Gambia.
         </p>
       </div>
 
       {/* Main content */}
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          {/* Photo placeholder */}
-          <div className="bg-gambia-blue/10 rounded-2xl aspect-[3/4] flex items-center justify-center text-gambia-blue/30 text-sm">
-            Photo of Usman coming soon
+          {/* Ousman's Photo */}
+          <div className="relative rounded-2xl overflow-hidden aspect-[3/4] shadow-md">
+            <Image
+              src="/images/about_me.jpg"
+              alt="Ousman Baldeh - Local Tour Guide in The Gambia"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+              className="object-cover"
+            />
           </div>
 
           {/* Bio */}
           <div className="flex flex-col gap-6">
             <div>
               <h2 className="text-2xl font-bold text-gambia-blue mb-4">
-                Usman Baldeh
+                Ousman Baldeh
               </h2>
               <p className="text-black/60 leading-relaxed mb-4">
-                Born and raised in The Gambia, Usman has spent years showing
-                visitors the side of his country that never makes it into
-                guidebooks — the villages, the river, the people, the food.
+                Born and raised in The Gambia, Ousman has spent over 25 years
+                showing visitors the side of his country that never makes it
+                into guidebooks — authentic villages, pristine river trips,
+                local traditions, and real Gambian cuisine.
               </p>
-              <p className="text-black/60 leading-relaxed">
-                Every trip is private and built around you. No groups of
-                strangers, no fixed routes, no tourist traps. Just you, Usman,
-                and the real Gambia.
+              <p className="text-black/60 leading-relaxed mb-4">
+                Every tour is completely private and tailored around your
+                schedule. No crowded buses, no rigid itineraries, and no tourist
+                traps. Just you, Ousman, and the warmth of Africa’s Smiling
+                Coast.
               </p>
+              <blockquote className="border-l-2 border-gambia-green pl-4 text-sm italic text-black/70 font-medium">
+                As I like to say: The more you smile in The Gambia, the brighter
+                the sun seems to shine!
+              </blockquote>
             </div>
 
             {/* Quick facts */}
@@ -51,23 +65,24 @@ export default function AboutPage() {
               </div>
               <div className="flex items-center gap-3 text-sm text-black/60">
                 <Globe className="w-4 h-4 shrink-0 text-gambia-red" />
-                <span>Covers The Gambia and border areas of Senegal</span>
+                <span>Covers The Gambia and border regions of Senegal</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-black/60">
                 <Clock className="w-4 h-4 shrink-0 text-gambia-red" />
-                <span>Available for half day and full day excursions</span>
+                <span>
+                  Available for half-day, full-day, and multi-day tours
+                </span>
               </div>
             </div>
 
             {/* CTA */}
-
             <a
               href="https://wa.me/2209984010"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-gambia-green text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-opacity text-center"
+              className="inline-block bg-gambia-green text-white px-8 py-4 rounded-full font-medium hover:opacity-90 transition-opacity text-center mt-2"
             >
-              Message Usman on WhatsApp
+              Message Ousman on WhatsApp
             </a>
           </div>
         </div>
@@ -79,29 +94,32 @@ export default function AboutPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <p className="font-semibold text-gambia-blue mb-2">Real access</p>
+              <p className="font-semibold text-gambia-blue mb-2">
+                Authentic Access
+              </p>
               <p className="text-sm text-black/60 leading-relaxed">
-                Locals go places tourists can't. Usman knows which villages
-                welcome visitors, which markets are worth your time, and which
-                restaurants locals actually eat at.
+                Experience places tourist buses miss. Ousman knows which
+                villages genuinely welcome guests, which markets offer authentic
+                crafts, and where locals actually dine.
               </p>
             </div>
             <div className="text-center">
               <p className="font-semibold text-gambia-blue mb-2">
-                Fair pricing
+                Transparent Pricing
               </p>
               <p className="text-sm text-black/60 leading-relaxed">
-                No inflated tourist prices, no surprise extras. What you see is
-                what you pay — transport and entrance fees always included.
+                No hidden charges or unexpected add-ons. Clear, honest pricing
+                with transport and entrance fees clearly communicated upfront.
               </p>
             </div>
             <div className="text-center">
               <p className="font-semibold text-gambia-blue mb-2">
-                Your money stays local
+                Direct Community Support
               </p>
               <p className="text-sm text-black/60 leading-relaxed">
-                Booking directly with Usman means your money goes straight to a
-                Gambian family — not a foreign-owned tour operator.
+                Booking directly ensures your money directly benefits local
+                Gambian families and community businesses rather than foreign
+                agencies.
               </p>
             </div>
           </div>

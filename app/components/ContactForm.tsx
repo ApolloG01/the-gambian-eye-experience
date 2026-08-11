@@ -39,7 +39,7 @@ export default function ContactForm() {
           Message sent!
         </p>
         <p className="text-black/60">
-          Usman will get back to you as soon as possible.
+          Ousman will get back to you as soon as possible.
         </p>
       </div>
     );
@@ -94,14 +94,14 @@ export default function ContactForm() {
           name="message"
           required
           rows={5}
-          placeholder="Tell Usman when you're visiting, how many people, and what you're interested in..."
+          placeholder="Tell Ousman when you're visiting, how many people, and what you're interested in..."
           className="border border-black/20 rounded-xl px-4 py-3 text-sm outline-none focus:border-gambia-blue transition-colors resize-none"
         />
       </div>
 
       {formState === "error" && (
         <p className="text-sm text-gambia-red">
-          Something went wrong. Please try again or message Usman directly on
+          Something went wrong. Please try again or message Ousman directly on
           WhatsApp.
         </p>
       )}

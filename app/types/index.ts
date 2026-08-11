@@ -1,1 +1,1 @@
-export type Traveller = "Family" | "Couples" | "Groups";
+export type Traveller = "Just me" | "Family" | "Couples" | "Groups";

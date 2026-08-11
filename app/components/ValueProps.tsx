@@ -14,7 +14,7 @@ const props = [
     bg: "bg-gambia-blue/10",
     title: "Tailor Made",
     description:
-      "Tell Usman what you love and he builds a trip around your personality and interests — never a fixed, packaged route.",
+      "Tell Ousman what you love and he builds a trip around your personality and interests — never a fixed, packaged route.",
   },
   {
     icon: Gem,

@@ -1,43 +1,81 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import PageTransition from "./components/PageTransition";
+import { CurrencyProvider } from "@/app/context/CurrencyContext";
+import Navbar from "@/app/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+//  l'URL base del sito
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://usmanbaldeh.com";
 
 export const metadata: Metadata = {
-  title: "The Gambian Eye | Private Tours with Usman Baldeh",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "The Gambian Eye Experience | Authentic Private Tours & Trips",
+    template: "%s | The Gambian Eye Experience",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   description:
-    "Authentic, tailor-made excursions in The Gambia and Senegal. No hidden costs, no tourist traps. Private tours with local guide Usman Baldeh.",
+    "Explore The Gambia with Ousman. Private, tailor-made excursions, wildlife tours, and authentic cultural experiences across the Smiling Coast of Africa.",
+  keywords: [
+    "Gambia tours",
+    "Gambia excursions",
+    "Private guide Gambia",
+    "Ousman Gambia tours",
+    "Senegambia travel",
+    "Gambia wildlife explorer",
+  ],
+  authors: [{ name: "Usman & The Gambian Eye Team" }],
+  creator: "The Gambian Eye Experience",
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: baseUrl,
+    title: "The Gambian Eye Experience | Authentic Private Tours",
+    description:
+      "Book custom private excursions in The Gambia with expert local guide Usman. No upfront payments required.",
+    siteName: "The Gambian Eye Experience",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Gambian Eye Experience - Excursions in The Gambia",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Gambian Eye Experience | Authentic Private Tours",
+    description: "Tailor-made private trips and excursions in The Gambia.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="flex-1">
-          {" "}
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+    <html lang="en" className={jakarta.variable}>
+      <body className="antialiased bg-slate-50 text-gambia-blue">
+        <CurrencyProvider>
+          <Navbar />
+          {children}
+        </CurrencyProvider>
       </body>
     </html>
   );

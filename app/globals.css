@@ -6,6 +6,7 @@
   --color-gambia-red-dark: #a50e1e;
   --color-gambia-white: #ffffff;
   --color-gambia-blue: #0c1c8c;
+  --color-gambia-navy: #16308a;
   --color-gambia-green: #3a7728;
   --color-gambia-surface: #f1f3fb;
 
@@ -26,5 +27,5 @@
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans Fallback", sans-serif;
 }

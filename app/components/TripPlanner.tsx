@@ -31,7 +31,7 @@ export default function TripPlanner() {
 
   function buildWhatsAppMessage() {
     const parts: string[] = [
-      "Hi Usman! I'd like to plan a trip in The Gambia.",
+      "Hi Ouman! I'd like to plan a trip in The Gambia.",
     ];
     if (selectedTraveller) parts.push(`Travelling as: ${selectedTraveller}.`);
     if (selectedInterests.length > 0)
@@ -118,7 +118,7 @@ export default function TripPlanner() {
           Plan your trip
         </h2>
         <p ref={subRef} className="text-black/60 mb-10 py-4">
-          Tell Usman who's coming and what you love — we'll start a WhatsApp
+          Tell Ousman who's coming and what you love — we'll start a WhatsApp
           message with your choices so planning is effortless.
         </p>
 
