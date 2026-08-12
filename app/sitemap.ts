@@ -3,11 +3,11 @@ import { tours } from "@/app/data/tours";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://thegambianeye.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.ousmanbaldeh.tours";
 
   // URL dei singoli tour (usa .slug per far corrispondere le rotte di Next.js)
   const tourUrls = tours.map((tour) => ({
-    url: `${baseUrl}/tours/${tour.slug}`, // <-- Modificato da tour.id a tour.slug
+    url: `${baseUrl}/tours/${tour.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
@@ -40,13 +40,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/faq`, // <-- NUOVA PAGINA FAQ
+      url: `${baseUrl}/faq`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/terms`, // <-- NUOVA PAGINA TERMS
+      url: `${baseUrl}/terms`,
       lastModified: new Date(),
       changeFrequency: "yearly" as const,
       priority: 0.3,

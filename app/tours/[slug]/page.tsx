@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const imageUrl = tour.image.startsWith("http")
     ? tour.image
-    : `https://usmanbaldeh.com${tour.image}`;
+    : `https://www.ousmanbaldeh.tours${tour.image}`;
 
   return {
     title,

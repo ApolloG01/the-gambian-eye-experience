@@ -4,7 +4,11 @@ export type Interest =
   | "History & Heritage"
   | "Local Culture"
   | "Beach & Relaxation"
-  | "Boat & River";
+  | "Boat & River"
+  | "Adventure"
+  | "Nature & Wildlife"
+  | "Chillax at the Seaside"
+  | "Boat Trips";
 
 export type Duration = "Half day" | "Full day" | "2 days" | "Multi-day";
 

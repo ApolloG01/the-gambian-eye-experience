@@ -5,7 +5,8 @@ import { CurrencyProvider } from "@/app/context/CurrencyContext";
 import Navbar from "@/app/components/Navbar";
 
 //  l'URL base del sito
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://usmanbaldeh.com";
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.ousmanbaldeh.tours";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

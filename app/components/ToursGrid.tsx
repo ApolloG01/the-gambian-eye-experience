@@ -251,22 +251,19 @@ function ToursGridContent() {
                       Details
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
-                    <a
-                      target="_blank"
-                      href={`https://wa.me/2209984010?text=${encodeURIComponent(
-                        `Hello Ousman, I would like to book the ${tour.name} excursion.`,
-                      )}`}
+                    {/* Modifica il pulsante Book Tour dentro filteredTours.map */}
+                    <button
                       type="button"
                       onClick={() =>
                         setActiveBookingTour({
                           name: tour.name,
-                          price: tour.priceFrom,
+                          price: tour.priceFrom ?? (tour as any).price ?? 0,
                         })
                       }
-                      className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-gambia-blue text-white text-xs font-semibold hover:bg-gambia-blue/90 shadow-sm transition-all"
+                      className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-gambia-blue text-white text-xs font-semibold hover:bg-gambia-blue/90 shadow-sm transition-all cursor-pointer"
                     >
                       Book Tour
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -278,7 +275,7 @@ function ToursGridContent() {
       {activeBookingTour && (
         <BookingModal
           tourName={activeBookingTour.name}
-          priceFrom={activeBookingTour.price}
+          tourPrice={activeBookingTour.price}
           onClose={() => setActiveBookingTour(null)}
         />
       )}

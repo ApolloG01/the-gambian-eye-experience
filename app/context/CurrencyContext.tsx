@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 export type Currency = "GBP" | "EUR" | "USD" | "GMD";
 
@@ -29,29 +23,34 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(
 );
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrencyState] = useState<Currency>("GBP");
-
-  // Recupera la valuta salvata al montaggio del componente
-  useEffect(() => {
-    const saved = localStorage.getItem("preferred_currency") as Currency;
-    if (saved && rates[saved]) {
-      setCurrencyState(saved);
+  // Inizializzazione lazy dello stato: legge localStorage al primo render senza bisogno di useEffect
+  const [currency, setCurrencyState] = useState<Currency>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("preferred_currency") as Currency;
+      if (saved && rates[saved]) {
+        return saved;
+      }
     }
-  }, []);
+    return "GBP";
+  });
 
   const setCurrency = (newCurrency: Currency) => {
     setCurrencyState(newCurrency);
-    localStorage.setItem("preferred_currency", newCurrency);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("preferred_currency", newCurrency);
+    }
   };
 
   const getConvertedPrice = (amountInGBP: number) => {
-    const { rate } = rates[currency];
-    return Math.round(amountInGBP * rate);
+    const validAmount = Number(amountInGBP) || 0;
+    const currentRate = rates[currency]?.rate ?? 1;
+    return Math.round(validAmount * currentRate);
   };
 
   const formatPrice = (amountInGBP: number) => {
-    const { symbol } = rates[currency];
-    const converted = getConvertedPrice(amountInGBP);
+    const validAmount = Number(amountInGBP) || 0;
+    const { symbol } = rates[currency] || { symbol: "£" };
+    const converted = getConvertedPrice(validAmount);
 
     if (currency === "GMD") {
       return `${converted.toLocaleString()} ${symbol}`;

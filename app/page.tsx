@@ -8,11 +8,9 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <>
-      {/* Hero */}
       <HeroSection />
       {/* Typescript Value Props */}
       <ValueProps />
-
       <TripPlanner />
       <RealMomentsSection />
       <Footer />
