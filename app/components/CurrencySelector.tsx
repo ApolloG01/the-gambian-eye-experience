@@ -1,30 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import { useCurrency } from "@/app/context/CurrencyContext";
-import { Globe, ChevronDown } from "lucide-react";
+import { Globe } from "lucide-react";
+
+// Helper per verificare se siamo lato client
+const emptySubscribe = () => () => {};
+function useIsClient() {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+}
 
 export default function CurrencySelector() {
-  const { activeCurrency } = useCurrency();
-  const [mounted, setMounted] = useState(false);
-
-  // Evita che il server e il client renderizzino valori diversi da localStorage/state
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const { currency } = useCurrency();
+  const isClient = useIsClient();
 
   return (
     <div className="relative inline-block">
-      <button type="button" className="...">
+      <button
+        type="button"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-xs font-semibold text-black/70"
+      >
         <Globe className="w-3.5 h-3.5 text-black/50 shrink-0" />
-
-        {/* Mostra il codice solo se montato lato client, altrimenti fallback pulito */}
-        <span>{mounted ? activeCurrency?.code : "GBP"}</span>
-        <span className="text-black/40">
-          ({mounted ? activeCurrency?.symbol : "£"})
-        </span>
-
-        <ChevronDown className="..." />
+        <span>{isClient ? currency : "GBP"}</span>
       </button>
     </div>
   );
