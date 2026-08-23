@@ -113,7 +113,7 @@ export default function HeroSection() {
       <div className="relative z-20 max-w-3xl mx-auto px-4 text-center">
         <p
           ref={taglineRef}
-          className="text-sm uppercase tracking-widest text-gambia-red/70 mb-4 font-semibold"
+          className="inline-block text-xs uppercase tracking-widest bg-gambia-red text-white px-3 py-1 rounded-full mb-4 font-bold shadow-sm"
         >
           Private guide · The Gambia & Senegal
         </p>
@@ -125,7 +125,7 @@ export default function HeroSection() {
         </h1>
         <p
           ref={subRef}
-          className="text-lg md:text-xl text-white/80 mb-10 max-w-xl mx-auto"
+          className="text-lg md:text-xl text-white/90 mb-10 max-w-xl mx-auto"
         >
           Tailor-made excursions with Ousman Baldeh — transport and entrance
           fees always included, no hidden costs, no tourist traps.
