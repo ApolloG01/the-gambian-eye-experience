@@ -46,7 +46,7 @@ export const galleryItems: GalleryItem[] = [
   {
     id: "4",
     type: "video",
-    src: "/images/river_gambia1.jpg",
+    src: "/images/river_gambia1_0926.jpeg",
     videoUrl:
       "https://res.cloudinary.com/i0mcgvnd/video/upload/v1786116217/Gambian_River_Story2_zf4tlm.mp4",
     title: "River Gambia",
@@ -84,5 +84,15 @@ export const galleryItems: GalleryItem[] = [
     category: "reviews",
     caption:
       "BBC Radio 5 Host Dotun Adebayo Shares His Experience with Ousman Baldeh",
+  },
+  {
+    id: "8",
+    type: "video",
+    src: "/images/reptileFarm_cover1_0926.jpg", // Video Cover
+    videoUrl:
+      "https://res.cloudinary.com/i0mcgvnd/video/upload/v1791718173/kartong_Snakes_0926_z0dtoa.mp4",
+    title: "Kartong Reptile Farm",
+    category: "wildlife",
+    caption: "Snakes in Kartong",
   },
 ];
