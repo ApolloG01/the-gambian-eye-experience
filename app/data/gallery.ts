@@ -22,7 +22,7 @@ export const galleryItems: GalleryItem[] = [
     src: "/images/abuko_nature_reserve.jpg",
     title: "Abuko Nature Reserve Walk",
     category: "wildlife",
-    caption: "Getting close to native monkey species with Ousman.",
+    caption: "Explore Gambia's first nature reserve.",
   },
   {
     id: "2",
@@ -72,7 +72,7 @@ export const galleryItems: GalleryItem[] = [
     title: "Monkey Park",
     category: "wildlife",
     caption:
-      "A peaceful walk through Bijilo Forest Park with some curious friends. 🐒🌿",
+      "A peaceful walk through Bijilo Forest Park with some curious friends.",
   },
   {
     id: "7",

@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
 export type Currency = "GBP" | "EUR" | "USD" | "GMD";
 
@@ -23,16 +29,14 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(
 );
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  // Inizializzazione lazy dello stato: legge localStorage al primo render senza bisogno di useEffect
-  const [currency, setCurrencyState] = useState<Currency>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("preferred_currency") as Currency;
-      if (saved && rates[saved]) {
-        return saved;
-      }
+  const [currency, setCurrencyState] = useState<Currency>("GBP");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("preferred_currency") as Currency;
+    if (saved && rates[saved]) {
+      setCurrencyState(saved);
     }
-    return "GBP";
-  });
+  }, []);
 
   const setCurrency = (newCurrency: Currency) => {
     setCurrencyState(newCurrency);
